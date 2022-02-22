@@ -23,7 +23,7 @@ import qualified Data.HashMap.Strict as HM
 
 import Default
 import GetFields
-import TableToJson
+import ToJsonOriginal
 import Sample.DownloadHtml
 import Sample.Model
 

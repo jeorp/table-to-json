@@ -4,9 +4,7 @@
 {-# LANGUAGE TypeApplications  #-}
 {-# OPTIONS_GHC -fno-warn-orphans #-}
 
-module TableToJson where
-
-import Data.Default.Class
+module ToJsonOriginal where
 
 import Data.Aeson
 
