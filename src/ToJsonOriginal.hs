@@ -21,8 +21,8 @@ instance ToJSONOriginal a => ToJSONOriginal (Identity a) where
   toJsonOriginal = fmap pure . toJsonOriginal
 
 
-toRecord :: Forall (KeyTargetAre KnownSymbol ToJSONOriginal) xs => [(String, String)] -> Result (Record xs)
-toRecord kvs =  hgenerateFor (Proxy @ (KeyTargetAre KnownSymbol ToJSONOriginal)) $ 
+fromJsonRecord :: Forall (KeyTargetAre KnownSymbol ToJSONOriginal) xs => [(String, String)] -> Result (Record xs)
+fromJsonRecord kvs =  hgenerateFor (Proxy @ (KeyTargetAre KnownSymbol ToJSONOriginal)) $ 
     \m -> let k = symbolVal (proxyKeyOf m)
               v = lookup k kvs
           in case v of

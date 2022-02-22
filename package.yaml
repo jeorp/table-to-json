@@ -7,6 +7,7 @@ dependencies:
 - mtl
 - data-default-class
 - aeson
+- lens
 - vector
 - unordered-containers
 - http-client
