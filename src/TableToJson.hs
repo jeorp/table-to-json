@@ -12,19 +12,16 @@ import Data.Aeson
 
 import Data.Extensible
 import Data.Proxy
-import GHC.TypeLits
-import Data.Default.Class (Default(..))
+import GHC.TypeLits (symbolVal)
 import Control.Monad.Identity (Identity(..))
 
 
-class Default a => ToJSONOriginal a where 
+class ToJSONOriginal a where 
   toJsonOriginal :: String -> Result a
 
 instance ToJSONOriginal a => ToJSONOriginal (Identity a) where
   toJsonOriginal = fmap pure . toJsonOriginal
 
-instance Default a => Default (Identity a) where
-  def = Identity def
 
 toRecord :: Forall (KeyTargetAre KnownSymbol ToJSONOriginal) xs => [(String, String)] -> Result (Record xs)
 toRecord kvs =  hgenerateFor (Proxy @ (KeyTargetAre KnownSymbol ToJSONOriginal)) $ 
@@ -32,6 +29,6 @@ toRecord kvs =  hgenerateFor (Proxy @ (KeyTargetAre KnownSymbol ToJSONOriginal))
               v = lookup k kvs
           in case v of
             Just x -> Field <$> toJsonOriginal x 
-            Nothing -> pure $ Field def
+            Nothing -> Error "no field found ..."
 
 
