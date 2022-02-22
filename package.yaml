@@ -1,0 +1,41 @@
+
+name: tabele-to-json
+dependencies:
+- base
+- text
+- bytestring
+- mtl
+- data-default-class
+- aeson
+- http-client
+- http-conduit
+- hxt
+- hxt-css
+- extensible
+- hspec
+
+library:
+  source-dirs: src
+
+executables:
+  tabele-to-json-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:  
+    - tabele-to-json
+
+tests:
+  tabele-to-json-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tabele-to-json
+
