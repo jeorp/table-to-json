@@ -1,5 +1,6 @@
 module Main where
 
+import Sample.Scraping (getBrandList)
+
 main :: IO ()
-main = do
-  pure ()
+main = getBrandList >>= mapM_ print . take 10

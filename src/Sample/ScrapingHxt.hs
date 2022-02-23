@@ -17,9 +17,7 @@ import Control.Arrow
 import Data.Tree.NTree.TypeDefs
 
 import Data.Aeson
-import Data.Aeson.Types (parse, Result(..))
-import qualified Data.Vector as V
-import qualified Data.HashMap.Strict as HM 
+import Data.Aeson.Types (parse, Result(..)) 
 
 parseHTML = readString 
   [ withValidate no,

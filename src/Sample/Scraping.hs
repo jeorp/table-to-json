@@ -18,8 +18,6 @@ import qualified Data.Text.Encoding as T
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy.Char8 as BL
 
-import qualified Data.Vector as V
-import qualified Data.HashMap.Strict as HM
 
 import ToJsonOriginal
 import Sample.DownloadHtml
