@@ -13,7 +13,9 @@ import Data.Extensible
 import Data.Proxy
 import GHC.TypeLits
 
-type Brand = Record 
+type Brand = Record BrandFields
+
+type BrandFields = 
  '[
     "id" :> Integer,
     "brandname" :> Maybe Text, 
@@ -23,3 +25,6 @@ type Brand = Record
     "lost" :> Maybe Bool,
     "median" :> Maybe Int
   ]
+
+getBrandFields :: [String]
+getBrandFields = henumerateFor (Proxy :: Proxy (KeyIs KnownSymbol)) (Proxy @BrandFields) ((:) . symbolVal . proxyKeyOf) []
